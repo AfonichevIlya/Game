@@ -20,41 +20,10 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="./css/styles.css">
   </head>
-  <title>GAME CENTER</title>
-  <style>
-    #container {
-      width: 900px;
-      height: 500px;
-      top: 150px;
-      left: 25%;
-      position: relative;
-      overflow: hidden;
-      background-image: url(./img/imgonline-com-ua-Resize-uFH6Hcs94QbQy88.jpg);
-    }
-    #obstacle1 {
-      width: 50px;
-      height: 70px;
-      position: absolute;
-      border: 1px solid black;
-      left: 655px;
-      bottom: 0px;
-      background-color: purple;
-    }
-    #animate {
-      width: 50px;
-      height: 50px;
-      left: 150px;
-      bottom: 0px;
-      position: absolute;
-      background-color: rgb(255, 217, 0);
-      border: 1px solid black;
-    }
 
-    .navbar {
-      background-color: rgb(60, 0, 116);
-    }
-  </style>
+  <title>GAME CENTER</title>
   <body>
     <nav class="navbar">
       <div class="container-fluid">
@@ -64,179 +33,94 @@
             alt=""
             width="60"
             height="60"
-            class="d-inline-block align-text-top"
-          />
+            class="d-inline-block align-text-top" />
           GAME CENTER
         </a>
       </div>
     </nav>
+    <div class="container Mario-Square">
+    <a type="submit" id="btn1" onclick="playMario(), this.style.display='none', document.querySelector('#container').style.display = 'block', document.querySelector('.container.Flappy-Mario').style.display = 'none', document.querySelector('.text').style.display = 'block'" class="button d">
+      <div class="button__line" id="btn"></div>
+      <div class="button__line" id="btn"></div>
+      <span class="button__text" id="btn">PLAY Mario-Square</span>
+      <div class="button__drow1" id="btn"></div>
+      <div class="button__drow2" id="btn"></div>
+    </a>
     <div id="container">
       <div id="animate"></div>
       <div id="obstacle1"></div>
     </div>
-    <h3 style="margin-left: 30px; margin-top: -250px;">Нажмите 
+    <div class="text" style="display: none; margin-left: -60px; ">
+    <h3 style="margin-left: 30px; margin-top: -280px;">Нажмите 
       "F"
       для</h3>
     <h3 style="margin-left: 80px; color: blueviolet;">прыжка</h3>
-    <h3 style="margin-left: 30px; margin-top: 70px;">Нажмите 
+    <h3 style="margin-left: 330px; margin-top: -80px;">Нажмите 
       "Shift + D"
       для</h3>
-    <h3 style="margin-left: 60px; color: blueviolet;">высокого прыжка</h3>
+    <h3 style="margin-left: 370px; color: blueviolet;">высокого прыжка</h3>
+  </div>
+  </div>
 
-    <script>
-      function move() {
-        let elem2 = document.getElementById("obstacle1");
-        let pos2 = 900;
-        let od = setInterval(move1);
-        function random1(max) {
-          return Math.floor(Math.random() * max);
-        }
-        function move1(lala) {
-          lala = random1(9);
-          if (pos2 == -40) {
-            console.log(lala);
-            if (lala == 0) {
-              elem2.style.backgroundColor = "purple";
-              elem2.style.width = 50 + "px";
-              elem2.style.height = 60 + "px";
-            } else if (lala == 1) {
-              elem2.style.backgroundColor = "red";
-              elem2.style.width = 60 + "px";
-              elem2.style.height = 20 + "px";
-            } else if (lala == 2) {
-              elem2.style.backgroundColor = "green";
-              elem2.style.width = 30 + "px";
-              elem2.style.height = 95 + "px";
-            } else if (lala == 3) {
-              elem2.style.backgroundColor = "blue";
-              elem2.style.width = 40 + "px";
-              elem2.style.height = 70 + "px";
-            } else if (lala == 4) {
-              elem2.style.backgroundColor = "Tomato";
-              elem2.style.width = 40 + "px";
-              elem2.style.height = 170 + "px";
-            } else if (lala == 5){
-              elem2.style.backgroundColor = "violet";
-              elem2.style.width = 40 + "px";
-              elem2.style.height = 220 + "px";
-            } else if (lala == 6){
-              elem2.style.backgroundColor = "PaleVioletRed";
-              elem2.style.width = 20 + "px";
-              elem2.style.height = 100 + "px";
-            } else if (lala == 7){
-              elem2.style.backgroundColor = "Indigo";
-              elem2.style.width = 30 + "px";
-              elem2.style.height = 190 + "px";
-            } else if (lala == 8){
-              elem2.style.backgroundColor = "BurlyWood";
-              elem2.style.width = 50 + "px";
-              elem2.style.height = 200 + "px";
-            }else if (lala == 9){
-              elem2.style.backgroundColor = "IndianRed";
-              elem2.style.width = 50 + "px";
-              elem2.style.height = 210 + "px";
-            }
-            pos2 = 910;
-            pos2--;
-            elem2.style.left = pos2 + "px";
-          } else {
-            pos2--;
-            elem2.style.left = pos2 + "px";
-          }
-        }
-      }
-      move();
-      
-      document.addEventListener("keydown", function(event) { 
-        if (event.code === "KeyF") {
-           myMove();
-           sound()
-        }
-        });
-        document.addEventListener("keydown", function(event) { 
-        if (event.shiftKey && event.code === "KeyD") {
-           myMove2();
-           sound()
-        }
-      });
-      function sound(params) {
-        let audio = new Audio()
-        audio.src = "maro-jump-sound-effect_1.mp3"
-        audio.autoplay = true;
-      }
-      function sound2(params) {
-        let audio = new Audio()
-        audio.src = "super-mario-saundtrek.mp3"
-        audio.autoplay = true;      }
-      sound2()
-        function myMove2() {
-          let elem1 = document.getElementById("animate");
-        let pos = 0;
-        let id = setInterval(frame);
-        function frame() {
-          if (pos == 300) {
-            let id1 = setInterval(down);
-            function down() {
-              if (pos == 0) {
-                clearInterval(id);
-              } else {
-                pos--;
-                elem1.style.bottom = pos + "px";
-              }
-            }
-          } else {
-            pos++;
-            elem1.style.bottom = pos + "px";
-          }
-        }
-          
-        }
+    <div class="container Flappy-Mario">
+      <div class=" ">
+        <a type="submit" id="btn" onclick="play(), this.style.display='none', document.querySelector('.container.Mario-Square').style.display = 'none', document.querySelector('.text1').style.display = 'block'"class="button">
+          <div class="button__line" id="btn"></div>
+          <div class="button__line" id="btn"></div>
+          <span class="button__text" id="btn">PLAY Flappy-Mario</span>
+          <div class="button__drow1" id="btn"></div>
+          <div class="button__drow2" id="btn"></div>
+        </a>
+      </div>
+        <div class="position-absolute top-10 start-50 translate-center">
+            <canvas id="game" width="350" height="512"></canvas>
+            <script src="./js/game.js"></script>
+        </div>
+        <div class="text1" style="display: none;margin-top: 100px; width: 100%;">
+          <h3 style="margin-left: 450px; margin-top: -80px;">Нажмите 
+           любую кнопку
+            для</h3>
+          <h3 style="margin-left: 580px; color: blueviolet;">прыжка</h3>
+        </div>
+      </div>
+  
+ 
+  <style>
+#container {
+    width: 900px;
+    height: 500px;
+    top: 120px;
+    left: 3%;
+    position: relative;
+    overflow: hidden;
+    background-image: url(./img/imgonline-com-ua-Resize-uFH6Hcs94QbQy88.jpg);
+  display: none;
+  }
 
-      function myMove() {
-        let elem1 = document.getElementById("animate");
-        let pos = 0;
-        let id = setInterval(frame);
-        function frame() {
-          if (pos == 150) {
-            let id1 = setInterval(down);
-            function down() {
-              if (pos == 0) {
-                clearInterval(id);
-              } else {
-                pos--;
-                elem1.style.bottom = pos + "px";
-              }
-            }
-          } else {
-            pos++;
-            elem1.style.bottom = pos + "px";
-          }
-        }
-      }
-      let timeRect = setInterval(time1);
-      function time1() {
-        let rect = animate.getBoundingClientRect();
-        let rect2 = obstacle1.getBoundingClientRect();
-        let time1 = true;
-        if (rect.bottom < rect2.top) {
-          time1 = false;
-        }
-        if (rect.top > rect2.bottom) {
-          time1 = false;
-        }
-        if (rect.right < rect2.left) {
-          time1 = false;
-        }
-        if (rect.left > rect2.right) {
-          time1 = false;
-        }
-        if (time1) {
-          location.reload();
-        }
-      }
-    
-     
+  #obstacle1 {
+    width: 50px;
+    height: 70px;
+    position: absolute;
+    border: 1px solid black;
+    left: 655px;
+    bottom: 0px;
+    background-color: purple;
+  }
+  #animate {
+    width: 50px;
+    height: 50px;
+    left: 150px;
+    bottom: 0px;
+    position: absolute;
+    background-color: rgb(255, 217, 0);
+    border: 1px solid black;
+  }
 
-    </script>
-  </body>
+  .navbar {
+    background-color: rgb(60, 0, 116);
+  }
+
+  </style>
+   <script src="./js/game.js"></script>
+    </body>
 </html>
