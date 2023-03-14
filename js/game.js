@@ -161,7 +161,7 @@ function playMario() {
 
 function play() {
 const box = document.getElementById("game")
-var ctx = box.getContext("2d")
+var context = box.getContext("2d")
 
 const mario = new Image()
 const city = new Image()
@@ -175,7 +175,7 @@ floor.src="img/floor.png"
 pipeup.src="img/pipeup.png"
 pipebottom.src="img/pipebottom.png"
 
-const fly = new Audio();
+
 const score_mp3 = new Audio();
 const fon_mp3 = new Audio();
 
@@ -207,11 +207,11 @@ pipes[0]  = {
 
 
 function draw() {
-    ctx.drawImage(city, 0, 0)
+  context.drawImage(city, 0, 0)
     fon_mp3.play();
     for (i=0; i<pipes.length; i++) {
-    ctx.drawImage(pipeup, pipes[i].x , pipes[i].y -30 )
-    ctx.drawImage(pipebottom, pipes[i].x, pipes[i].y + pipeup.height + gap )
+      context.drawImage(pipeup, pipes[i].x , pipes[i].y -30 )
+      context.drawImage(pipebottom, pipes[i].x, pipes[i].y + pipeup.height + gap )
     
     pipes[i].x--;
 
@@ -226,7 +226,8 @@ function draw() {
         if(xPos + mario.width >= pipes[i].x
             && xPos <= pipes[i].x + pipeup.width 
             && (yPos <= pipes[i].y + pipeup.height - 40
-            || yPos + mario.height >= pipes[i].y + pipeup.height + gap) || yPos + mario.height >= box.height - floor.height + 13)  { 
+            || yPos + mario.height >= pipes[i].y + pipeup.height + gap) || 
+            yPos + mario.height >= box.height - floor.height + 13)  { 
                 location.reload();
             }
             if(pipes[i].x == 5  ) {
@@ -234,19 +235,16 @@ function draw() {
                 score_mp3.play();
             }
     }
-    ctx.drawImage(floor, 0, box.height - floor.height )
-    ctx.drawImage(mario, xPos, yPos, 38, 40)
+    context.drawImage(floor, 0, box.height - floor.height )
+    context.drawImage(mario, xPos, yPos, 38, 40)
     
     yPos  += gravitation;
-    ctx.fillStyle = "#000";
-    ctx.font = "24px Verdana";
-    ctx.fillText("Счет: " + score, 10, box.height - 20);
-    // addEventListener("keyup", function(event) {
-    //     if (event)
-       
-    //         yPos <=354;
-        
-    //   });
+    context.fillStyle = "#black";
+    context.font = "24px Times New Roman";
+    context.fillText("Счет: " + score, 10, box.height - 20);
+
+
+
     requestAnimationFrame(draw)
     
 }
