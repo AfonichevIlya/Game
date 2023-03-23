@@ -161,13 +161,16 @@ function playMario() {
 
 function play() {
 const box = document.getElementById("game")
-var context = box.getContext("2d")
+const context = box.getContext("2d")
 
 const mario = new Image()
 const city = new Image()
 const floor = new Image()
 const pipeup = new Image()
 const pipebottom = new Image()
+const hidden = document.querySelector(".text1");
+const textStopGame = document.querySelector(".textStopGame");
+
 
 mario.src="img/mario.png"
 city.src="img/city.png"
@@ -204,8 +207,14 @@ pipes[0]  = {
    x : box.width,
    y : 0 
 }
-
-
+function StopGameReload()  {
+ 
+ textStopGame.innerHTML =  `<h1 style="color: ">Вы проиграли! <br/ ><h1 class="score2">Ваш счет: <span class = "score">${score}<span></h1></h1>`;
+ setTimeout(Reloading, 4000)
+}
+function Reloading() {
+  location.reload();
+}
 function draw() {
   context.drawImage(city, 0, 0)
     fon_mp3.play();
@@ -228,8 +237,21 @@ function draw() {
             && (yPos <= pipes[i].y + pipeup.height - 40
             || yPos + mario.height >= pipes[i].y + pipeup.height + gap) || 
             yPos + mario.height >= box.height - floor.height + 13)  { 
-                location.reload();
-            }
+            
+              box.remove();
+             
+              hidden.remove();
+              fon_mp3.volume = 0;
+              fon_mp3.pause();
+              score_mp3.volume = 0;
+              score_mp3.pause();
+              
+              StopGameReload()
+              score.pause();
+              
+               
+            
+          }
             if(pipes[i].x == 5  ) {
                 score++
                 score_mp3.play();

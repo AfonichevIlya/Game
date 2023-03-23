@@ -453,3 +453,9 @@ canvas {
 
 
 
+.score {
+    color: purple;
+  }
+  .score2 {
+    text-align: center;
+  }
