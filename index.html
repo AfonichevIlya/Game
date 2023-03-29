@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      rel="shortcut icon"
-      href="./img/icons8-metaverse-60.png"
-      type="image/x-icon"
+    rel="shortcut icon"
+    href="./img/icons8-metaverse-60.png"
+    type="image/x-icon"
     />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-      crossorigin="anonymous"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+    crossorigin="anonymous"
     />
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
@@ -25,11 +25,12 @@
 
   <title>GAME CENTER</title>
   <body>
+          
     <nav class="navbar">
       <div class="container-fluid">
         <a class="navbar-brand" href="#" style="color: rgb(254, 200, 255)">
           <img
-            src="./img/icons8-metaverse-60.png"
+          src="./img/icons8-metaverse-60.png"
             alt=""
             width="60"
             height="60"
@@ -39,6 +40,7 @@
       </div>
     </nav>
     <div class="container Mario-Square">
+      
     <a type="submit" id="btn1" onclick="playMario(), this.style.display='none', document.querySelector('#container').style.display = 'block', document.querySelector('.container.Flappy-Mario').style.display = 'none', document.querySelector('.text').style.display = 'block'" class="button d">
       <div class="button__line" id="btn"></div>
       <div class="button__line" id="btn"></div>
@@ -47,10 +49,12 @@
       <div class="button__drow2" id="btn"></div>
     </a>
     <div id="container">
+      <h1 id="pon" style="color: white;">Ваш счет:</h1>
+      <h1 class="schetchik" style="color: white; margin-left: 8%;">0 </h1>
       <div id="animate"></div>
       <div id="obstacle1"></div>
     </div>
-    <div class="text" style="display: none; margin-left: -60px; ">
+    <div id="ha" class="text" style="display: none; margin-left: -60px; ">
     <h3 style="margin-left: 30px; margin-top: -280px;">Нажмите 
       "F"
       для</h3>
@@ -92,8 +96,8 @@
   <style>
 #container {
     width: 900px;
-    height: 500px;
-    top: 120px;
+    height: 600px;
+    top: 220px;
     left: 3%;
     position: relative;
     overflow: hidden;

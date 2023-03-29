@@ -1,4 +1,5 @@
-function playMario() {
+function playMario() { 
+ 
     function move() {
       let elem2 = document.getElementById("obstacle1");
       let pos2 = 900;
@@ -73,17 +74,17 @@ function playMario() {
          sound()
       }
     });
-    function sound(params) {
+    function sound() {
       let audio = new Audio()
       audio.src = "maro-jump-sound-effect_1.mp3"
       audio.autoplay = true;
       audio.volume=0.08;
     }
-    function sound2(params) {
-      let audio = new Audio()
-      audio.src = "super-mario-saundtrek.mp3"
-      audio.autoplay = true; 
-      audio.volume=0.2;
+    function sound2() {
+      let musik = new Audio()
+      musik.src = "super-mario-saundtrek.mp3"
+      musik.autoplay = true; 
+      musik.volume=0.2;
          }
     sound2()
       function myMove2() {
@@ -129,30 +130,75 @@ function playMario() {
           elem1.style.bottom = pos + "px";
         }
       }
-    }
-    let timeRect = setInterval(time1);
-    function time1() {
+    } 
+    let ddd = document.querySelector(".schetchik")
+    
+    
+    let score = 0
+    function scorePlus() {
+     
       let rect = animate.getBoundingClientRect();
       let rect2 = obstacle1.getBoundingClientRect();
-      let time1 = true;
-      if (rect.bottom < rect2.top) {
-        time1 = false;
+        if (rect.x === rect2.x ) {
+        score++
       }
-      if (rect.top > rect2.bottom) {
-        time1 = false;
-      }
-      if (rect.right < rect2.left) {
-        time1 = false;
-      }
-      if (rect.left > rect2.right) {
-        time1 = false;
-      }
-      if (time1) {
-        location.reload();
-      }
+      ddd.innerHTML = score
     }
+   setInterval(scorePlus)
+        function reload() {
+        location.reload();
+      }  
+    
+    let timeRect = setInterval(time1);
+    function time1() {
+        let rect = animate.getBoundingClientRect();
+        let rect2 = obstacle1.getBoundingClientRect();
+        let time1 = true;
+         
+         if (rect.bottom < rect2.top) {
+           time1 = false;
+          }
+          if (rect.top > rect2.bottom) {
+            time1 = false;
+          }
+          if (rect.right < rect2.left) {
+            time1 = false;
+          }
+          if (rect.left > rect2.right) {
+            time1 = false;
+          }
+          
+          if (time1) {
+         sound  = false;
+         clearTimeout(sound2)
+          let lol =  document.getElementById("obstacle1");
+          lol.remove()  
+          let lala = document.getElementById("animate")  
+          lala.remove()
+          ddd.remove()
+          let haha = document.getElementById("pon")
+          haha.remove()
+          let aga = document.getElementById("container")
+          aga.style.backgroundImage = "none"
+          aga.style.backgroundColor = "rgb(155,109,232)"
+          aga.style.textAlign = "center"
+          aga.style.paddingTop = "30px"
+          aga.style.height = "170px"
+          aga.style.borderRadius = "20px"
+
+          
+
+          aga.innerHTML = `<h1 style="color:black ">Вы проиграли! <br/ ><h1 style="color:black" >Ваш счет: <span style="color:black" class = "score">${score}<span></h1></h1>`
+        setInterval(reload,4000)
+        let ga = document.getElementById("ha")
+        ga.remove()
+        }
+      }
+        
+      
   
   }
+   
 
 
 
